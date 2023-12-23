@@ -29,8 +29,7 @@ exclude = [
     "**/*.bazel",
     "**/test/**",
     "bazel-*",
-    "htmlbook/**",
-    "data/**",
+    "book/**",
     "solutions/**",
     "figures/**"
 ]
@@ -82,7 +81,6 @@ pre-commit = "^3.4.0"
 poetry-pre-commit-plugin = "^0.1.2"
 
 [tool.black]
-line-length = 79
 include = '\.ipynb?$|\.pyi?$'
 exclude = '''
 /(
@@ -98,7 +96,6 @@ exclude = '''
 [tool.isort]
 profile = "black"
 multi_line_output = 3
-line_length = 79
 skip_glob = [
   "**/.git/**",
   "**/.history/**",

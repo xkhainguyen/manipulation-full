@@ -7,6 +7,7 @@ import os
 import sys
 
 import gymnasium as gym
+import wandb
 
 # `multiprocessing` also provides this method, but empirically `psutil`'s
 # version seems more reliable.
@@ -19,7 +20,6 @@ from stable_baselines3.common.vec_env import SubprocVecEnv
 from wandb.integration.sb3 import WandbCallback
 
 import manipulation.envs.box_flipup  # no-member
-import wandb
 
 
 def main():
@@ -91,9 +91,7 @@ def main():
     elif os.path.exists(zip):
         model = PPO.load(zip, env, verbose=1, tensorboard_log=f"runs/{run.id}")
     else:
-        model = PPO(
-            "MlpPolicy", env, verbose=1, tensorboard_log=f"runs/{run.id}"
-        )
+        model = PPO("MlpPolicy", env, verbose=1, tensorboard_log=f"runs/{run.id}")
 
     new_log = True
     while True:
